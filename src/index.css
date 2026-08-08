@@ -86,7 +86,8 @@ section {
       #fdfdfd 0%,
       rgba(253, 253, 253, 0) 100%
     ); /* Gradient colors */
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;

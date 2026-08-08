@@ -1,13 +1,14 @@
-import React from 'react'
-import Hero from './sections/Hero'
-
+import React from "react";
+import Hero from "./sections/Hero";
+import About from "./sections/About";
 
 const App = () => {
   return (
-    <div className=''>
+    <div>
       <Hero />
+      <About />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
