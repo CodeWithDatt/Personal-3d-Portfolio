@@ -1,5 +1,6 @@
 import React from "react";
 import GradientSpheres from "../compononents/GradientSpheres";
+import TitleHeader from "../compononents/TitleHeader";
 
 const About = () => {
   return (
@@ -13,10 +14,10 @@ const About = () => {
       />
 
         <div className="container h-full w-full md:my-40 my-20 relative z-10">
-
+            <TitleHeader title={"About Me"} text={"Passionate Creator , Lifelong Learner"} number={"01"} />
         </div>
     </section>
-  );
+  )
 };
 
 export default About;
