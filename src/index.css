@@ -42,7 +42,7 @@
 
 html,
 body {
-  width: 100dvw;
+  width: 100%;
   overflow-x: hidden;
   background-color: #0b0620;
   color: #a7a7a7;
@@ -50,8 +50,14 @@ body {
 }
 
 section {
-  width: 100dvw;
+  width: 100%;
   min-height: 100dvh;
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 20px;
 }
 
 @layer utilities {
