@@ -1,7 +1,9 @@
 import React from "react";
 import GradientSpheres from "../compononents/GradientSpheres";
 import TitleHeader from "../compononents/TitleHeader";
-
+import { Canvas } from "@react-three/fiber";
+import { Alien } from "../../public/models/Alien";
+import { OrbitControls } from "@react-three/drei";
 const About = () => {
   return (
     <section id="about" className="flex-center relative md:p-0 px-5">
@@ -22,7 +24,7 @@ const About = () => {
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div>
                   <img
-                    className="md:w-32 w-12 flower"s
+                    className="md:w-32 w-12 flower"
                     src="/images/flower.svg"
                     alt="flower"
                   />
@@ -42,6 +44,26 @@ const About = () => {
                     Three.js, while continuously improving my problem-solving
                     and development skills.
                   </p>
+                </div>
+              </div>
+            </div>
+            {/* 3D cute alien */}
+            <div className="md:col-span-5 col-span-12 row-span-5">
+              <div className="bg-[#c8d751] hover:cursor-grab w-full md:h-full h-60 rounded-2xl">
+                <div className="w-full h-full">
+                  <Canvas>
+                    <OrbitControls enableZoom={false} />
+                    <Alien scale={2} position={[0, -5.5, 0]} rotation={[0, -0.5, 0]} />
+                  </Canvas>
+                </div>
+              </div>
+            </div>
+            {/* Web Design Card */}
+            <div className="md:col-span-6 col-span-12 row-span-3">
+              <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
+                <div className="flex items-center gap-5">
+                  <h1></h1>
+                  <p></p>
                 </div>
               </div>
             </div>
