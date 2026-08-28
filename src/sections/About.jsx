@@ -4,6 +4,8 @@ import TitleHeader from "../compononents/TitleHeader";
 import { Canvas } from "@react-three/fiber";
 import { Alien } from "../../public/models/Alien";
 import { OrbitControls } from "@react-three/drei";
+import { div } from "three/tsl";
+import { bentoSocialLinks } from "../constants";
 const About = () => {
   return (
     <section id="about" className="flex-center relative md:p-0 px-5">
@@ -107,6 +109,22 @@ const About = () => {
                 </div>
               </div>
             </div>
+            {/* Bento Social Links */}
+            {bentoSocialLinks.map((item, index) => (
+              <div key={index} className="md:col-span-4 col-span-12 row-span-2">
+                <div className="bg-black-300 rounded-2xl p-7 w-full h-full group cursor-pointer">
+                  <div className="flex justify-between items-center h-full">
+                    <div className="flex items-center md:gap-5">
+                      <img src={item.icon} alt={item.icon} />
+                      <h1 className="gradient-title md:text-3xl text-xl md:m-0 ms-5 font-medium">{item.name}</h1>
+                    </div>
+                    <div className="lg:block md:hidden group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform ">
+                      <img src="images/arrowupright.svg" alt="arrow-up" className="lg:scale-100 scale-50"/>
+                    </div>
+                  </div> 
+                </div>
+              </div> 
+            ))}
           </div>
         </div>
       </div>
