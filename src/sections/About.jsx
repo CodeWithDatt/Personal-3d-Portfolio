@@ -6,7 +6,28 @@ import { Alien } from "../../public/models/Alien";
 import { OrbitControls } from "@react-three/drei";
 import { div } from "three/tsl";
 import { bentoSocialLinks } from "../constants";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 const About = () => {
+  useGSAP(() => {
+    // Slide-in animation for the cards
+    gsap.from("#card", {
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top top",
+        markers: true,
+      },
+    });
+  }, []);
+
   return (
     <section id="about" className="flex-center relative md:p-0 px-5">
       <GradientSpheres
@@ -65,7 +86,7 @@ const About = () => {
               </div>
             </div>
             {/* Software Development Card */}
-            <div className="md:col-span-6 col-span-12 row-span-3">
+            <div id="card" className="md:col-span-6 col-span-12 row-span-2">
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-center gap-2">
                   <h1 className="gradient-title md:text-3xl text-2xl font-medium">
@@ -79,7 +100,7 @@ const About = () => {
               </div>
             </div>
             {/* AI & ML Card */}
-            <div className="md:col-span-6 col-span-12 row-span-3">
+            <div id="card" className="md:col-span-6 col-span-12 row-span-2">
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-center gap-2">
                   <h1 className="gradient-title md:text-3xl text-2xl font-medium">
@@ -93,7 +114,7 @@ const About = () => {
               </div>
             </div>
             {/* Motivational Card */}
-            <div className="md:col-span-4 col-span-12 row-span-4">
+            <div id="card" className="md:col-span-4 col-span-12 row-span-2">
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-between">
                   {["THINK BETTER", "BUILD BETTER", "BE BETTER"].map(
@@ -111,19 +132,25 @@ const About = () => {
             </div>
             {/* Bento Social Links */}
             {bentoSocialLinks.map((item, index) => (
-              <div key={index} className="md:col-span-4 col-span-12 row-span-2">
+              <div key={index} className="md:col-span-4 col-span-12 row-span-1">
                 <div className="bg-black-300 rounded-2xl p-7 w-full h-full group cursor-pointer">
                   <div className="flex justify-between items-center h-full">
                     <div className="flex items-center md:gap-5">
                       <img src={item.icon} alt={item.icon} />
-                      <h1 className="gradient-title md:text-3xl text-xl md:m-0 ms-5 font-medium">{item.name}</h1>
+                      <h1 className="gradient-title md:text-3xl text-xl md:m-0 ms-5 font-medium">
+                        {item.name}
+                      </h1>
                     </div>
                     <div className="lg:block md:hidden group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform ">
-                      <img src="images/arrowupright.svg" alt="arrow-up" className="lg:scale-100 scale-50"/>
+                      <img
+                        src="images/arrowupright.svg"
+                        alt="arrow-up"
+                        className="lg:scale-100 scale-50"
+                      />
                     </div>
-                  </div> 
+                  </div>
                 </div>
-              </div> 
+              </div>
             ))}
           </div>
         </div>
