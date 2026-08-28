@@ -23,10 +23,46 @@ const About = () => {
       scrollTrigger: {
         trigger: "#about",
         start: "top top",
-        markers: true,
       },
     });
-  }, []);
+
+    gsap.from("#left-ani", {
+      opacity: 0,
+      x: "-50%",
+      stagger: 0.2,
+      duration: 1.2,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top top",
+      },
+    });
+
+    gsap.from("#right-ani", {
+      opacity: 0,
+      x: "50%",
+      stagger: 0.2,
+      duration: 1.2,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top top",
+      },
+    });
+
+    // Staggered text animations
+    gsap.from(".animated-text", {
+      opacity: 0,
+      y: 20,
+      stagger: 0.15,
+      duration: 0.6,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top top",
+      },
+    });
+  });
 
   return (
     <section id="about" className="flex-center relative md:p-0 px-5">
@@ -47,16 +83,20 @@ const About = () => {
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div>
                   <img
+                    id="left-ani"
                     className="md:w-32 w-12 flower"
                     src="/images/flower.svg"
                     alt="flower"
                   />
                 </div>
                 <div className="mt-5">
-                  <h1 className="text-blue-50 md:text-5xl text-3xl">
+                  <h1
+                    id="left-ani"
+                    className="text-blue-50 md:text-5xl text-3xl"
+                  >
                     Datt Patel
                   </h1>
-                  <p className="md:text-2xl mt-2">
+                  <p id="left-ani" className="md:text-2xl mt-2">
                     Datt Patel I am an Information Technology student and
                     aspiring software engineer with a passion for software
                     development, artificial intelligence, and machine learning.
@@ -72,8 +112,8 @@ const About = () => {
             </div>
             {/* 3D cute alien */}
             <div className="md:col-span-5 col-span-12 row-span-5">
-              <div className="bg-[#c8d751] hover:cursor-grab w-full md:h-full h-60 rounded-2xl">
-                <div className="w-full h-full">
+              <div className="bg-[#c8d751] hover:cursor-grab w-full md:h-full h-60 rounded-2xl ">
+                <div id="right-ani" className="w-full h-full">
                   <Canvas>
                     <OrbitControls enableZoom={false} />
                     <Alien
@@ -89,10 +129,10 @@ const About = () => {
             <div id="card" className="md:col-span-6 col-span-12 row-span-2">
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-center gap-2">
-                  <h1 className="gradient-title md:text-3xl text-2xl font-medium">
+                  <h1 className="gradient-title md:text-3xl text-2xl font-medium animated-text">
                     Software Development
                   </h1>
-                  <p className="md:text-2xl max-w-96">
+                  <p className="md:text-2xl max-w-96 animated-text">
                     Building modern, scalable applications with clean code and a
                     focus on practical, user-focused solutions.
                   </p>
@@ -103,10 +143,10 @@ const About = () => {
             <div id="card" className="md:col-span-6 col-span-12 row-span-2">
               <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-center gap-2">
-                  <h1 className="gradient-title md:text-3xl text-2xl font-medium">
+                  <h1 className="gradient-title md:text-3xl text-2xl font-medium animated-text">
                     AI & Machine Learning
                   </h1>
-                  <p className="md:text-2xl max-w-96">
+                  <p className="md:text-2xl max-w-96 animated-text">
                     Exploring intelligent technologies and building AI-driven
                     solutions to solve real-world problems.
                   </p>
@@ -120,7 +160,7 @@ const About = () => {
                   {["THINK BETTER", "BUILD BETTER", "BE BETTER"].map(
                     (text, index) => (
                       <h1
-                        className="gradient-title md:text-5xl text-3xl font-bold"
+                        className="gradient-title md:text-5xl text-3xl font-bold animated-text"
                         key={index}
                       >
                         {text}
