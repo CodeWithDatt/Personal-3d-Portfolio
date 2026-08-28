@@ -20,6 +20,7 @@ const About = () => {
       stagger: 0.2,
       duration: 0.8,
       ease: "power3.inOut",
+      delay: 1.5,
       scrollTrigger: {
         trigger: "#about",
         start: "top top",
