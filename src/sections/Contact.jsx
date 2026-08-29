@@ -12,7 +12,7 @@ const Contact = () => {
         {/* ================= HEADER ================= */}
         <TitleHeader
           title="CONTACT ME"
-          number="04"
+          number="07"
           text="Let's collaborate and build something meaningful"
         />
 

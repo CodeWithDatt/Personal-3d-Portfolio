@@ -55,7 +55,7 @@ const Testimonials = () => {
         <div className="testimonial-header">
           <TitleHeader
             title="TESTIMONIALS"
-            number="03"
+            number="06"
             text="What people have to say about my work"
           />
         </div>

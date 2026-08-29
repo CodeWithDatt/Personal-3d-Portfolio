@@ -125,7 +125,7 @@ const Education = () => {
         <div className="education-header">
           <TitleHeader
             title="EDUCATION"
-            number="05"
+            number="04"
             text="The academic journey behind my skills and knowledge"
           />
         </div>

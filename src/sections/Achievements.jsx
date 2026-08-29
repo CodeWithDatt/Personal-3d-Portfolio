@@ -201,7 +201,7 @@ const Achievements = () => {
         <div className="achievement-header">
           <TitleHeader
             title="ACHIEVEMENTS"
-            number="06"
+            number="05"
             text="Certifications, milestones and experiences that shaped my journey"
           />
         </div>
