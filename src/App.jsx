@@ -1,12 +1,29 @@
-import React from "react";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
+import {
+  Loader,
+  NavBar,
+  Sidebar,
+  Hero,
+  About,
+  TechStack,
+  Projects,
+  Testimonials,
+  Footer,
+  Contact,
+} from "./sections";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-black-100">
+      {/* <Loader /> */}
+      <NavBar />
+      <Sidebar />
       <Hero />
       <About />
+      <TechStack />
+      <Projects />
+      <Testimonials />
+      <Contact />
+      <Footer />
     </div>
   );
 };

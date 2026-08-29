@@ -1,0 +1,10 @@
+export { default as Sidebar } from "../compononents/SideBar";
+export { default as Loader } from "../compononents/Loader";
+export { default as NavBar } from "../compononents/NavBar";
+export { default as Hero } from "./Hero";
+export { default as About } from "./About";
+export { default as TechStack } from "./TechStack";
+export { default as Projects } from "./Project";
+export { default as Testimonials } from "./Testimonials";
+export { default as Contact } from "../sections/Contact";
+export { default as Footer } from "../compononents/Footer";

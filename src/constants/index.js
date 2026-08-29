@@ -23,23 +23,23 @@ const navItems = [
 
 const bentoSocialLinks = [
   {
-    name: "Facebook",
-    href: "https://www.facebook.com/",
-    icon: "/images/fb.svg",
+    name: "Contact",
+    href: "tel:+91XXXXXXXXXX",
+    icon: "/images/phone.svg",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/datt_patel_0207/",
     icon: "/images/insta.svg",
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/datt-patel-31865032b/",
     icon: "/images/linkedin.svg",
   },
   {
     name: "WhatsApp",
-    href: "https://www.whatsapp.com/",
+    href: "https://wa.me/6355413093",
     icon: "/images/whatsapp.svg",
   },
 ];
@@ -92,36 +92,50 @@ const slides = [
     id: 1,
     title: "Sofi",
     img: "/images/p1.png",
+    github: "https://github.com/yourusername/sofi",
+    live: "https://sofi-demo.vercel.app",
   },
   {
     id: 2,
     title: "Jasmina",
     img: "/images/p2.png",
+    github: "https://github.com/yourusername/jasmina",
+    live: "https://jasmina-demo.vercel.app",
   },
   {
     id: 3,
     title: "d.tampe",
     img: "/images/p3.png",
+    github: "https://github.com/yourusername/d-tampe",
+    live: "https://d-tampe-demo.vercel.app",
   },
   {
     id: 4,
     title: "Blimp.gr",
     img: "/images/p4.png",
+    github: "https://github.com/yourusername/blimp",
+    live: "https://blimp-demo.vercel.app",
   },
   {
     id: 5,
     title: "Hawk Style Design",
     img: "/images/p5.png",
+    github: "https://github.com/yourusername/hawk-style",
+    live: "https://hawk-style.vercel.app",
   },
   {
     id: 6,
     title: "Lewis",
     img: "/images/p6.png",
+    github: "https://github.com/yourusername/lewis",
+    live: "https://lewis-demo.vercel.app",
   },
   {
     id: 7,
     title: "Sofi",
     img: "/images/p1.png",
+    github: "https://github.com/yourusername/sofi",
+    live: "https://sofi-demo.vercel.app",
   },
 ];
 
@@ -158,23 +172,23 @@ const testimonials = [
 
 const footerIconsList = [
   {
-    name: "Facebook",
-    href: "https://www.facebook.com/",
-    icon: "/images/b-fb.svg",
+    name: "Contact",
+    href: "tel:+916355413093",
+    icon: "/images/phone.svg",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/datt_patel_0207/",
     icon: "/images/b-insta.svg",
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/datt-patel-31865032b/",
     icon: "/images/b-linked.svg",
   },
   {
     name: "WhatsApp",
-    href: "https://www.whatsapp.com/",
+    href: "https://wa.me/6355413093",
     icon: "/images/b-whatsapp.svg",
   },
 ];
