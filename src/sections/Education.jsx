@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,10 +13,10 @@ const educationData = [
     degree: "Diploma",
     field: "Information Technology",
     institute: "Ganpat University",
-    cgpa: "9.37 CGPA",
-    description:
-      "Completed a Diploma in Information Technology, building a strong foundation in programming, software development, databases, web technologies, and problem-solving.",
+    cgpa: "9.37",
     status: "Completed",
+    description:
+      "Completed a Diploma in Information Technology with a strong foundation in programming, software development, databases, web technologies, and problem-solving.",
   },
   {
     number: "02",
@@ -23,171 +24,204 @@ const educationData = [
     degree: "Bachelor of Technology",
     field: "Information Technology",
     institute: "Ganpat University",
-    cgpa: "COMING SOON",
+    cgpa: "—",
+    status: "Currently Pursuing",
     description:
       "Currently pursuing B.Tech in Information Technology, expanding my knowledge in software development, artificial intelligence, machine learning, modern web technologies, and advanced computing.",
-    status: "Currently Pursuing",
   },
 ];
 
 const Education = () => {
-  useGSAP(() => {
-    // Header animation
-    gsap.from(".education-header", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#education",
-        start: "top 80%",
-      },
-    });
+  const sectionRef = useRef(null);
 
-    // Timeline line animation
-    gsap.from(".education-line", {
-      scaleY: 0,
-      transformOrigin: "top",
-      duration: 1.5,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: ".education-timeline",
-        start: "top 75%",
-      },
-    });
+  useGSAP(
+    () => {
+      const ctx = gsap.context(() => {
+        // Initial states
+        gsap.set(".education-heading", {
+          opacity: 0,
+          y: 40,
+        });
 
-    // Timeline dots animation
-    gsap.from(".education-dot", {
-      scale: 0,
-      opacity: 0,
-      stagger: 0.25,
-      duration: 0.7,
-      ease: "back.out(1.7)",
-      scrollTrigger: {
-        trigger: ".education-timeline",
-        start: "top 75%",
-      },
-    });
+        gsap.set(".education-card", {
+          opacity: 0,
+          y: 70,
+          scale: 0.96,
+        });
 
-    // Education cards animation
-    gsap.from(".education-card", {
-      opacity: 0,
-      y: 80,
-      scale: 0.95,
-      stagger: 0.25,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".education-timeline",
-        start: "top 75%",
-      },
-    });
+        gsap.set(".education-dot", {
+          opacity: 0,
+          scale: 0,
+        });
 
-    // CGPA animation
-    gsap.from(".cgpa-box", {
-      opacity: 0,
-      x: 30,
-      scale: 0.8,
-      stagger: 0.25,
-      duration: 0.8,
-      ease: "back.out(1.5)",
-      scrollTrigger: {
-        trigger: ".education-timeline",
-        start: "top 70%",
-      },
-    });
+        gsap.set(".education-line", {
+          scaleY: 0,
+          transformOrigin: "top center",
+        });
 
-    // Bottom quote
-    gsap.from(".education-quote", {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".education-quote",
-        start: "top 90%",
-      },
-    });
-  });
+        // Header animation
+        gsap.to(".education-heading", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        });
+
+        // Timeline line
+        gsap.to(".education-line", {
+          scaleY: 1,
+          duration: 1.5,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: ".education-timeline",
+            start: "top 75%",
+            once: true,
+          },
+        });
+
+        // Dots
+        gsap.to(".education-dot", {
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.25,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".education-timeline",
+            start: "top 75%",
+            once: true,
+          },
+        });
+
+        // Cards
+        gsap.to(".education-card", {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          stagger: 0.25,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".education-timeline",
+            start: "top 75%",
+            once: true,
+          },
+        });
+      }, sectionRef);
+
+      return () => ctx.revert();
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
+      ref={sectionRef}
       id="education"
-      className="relative w-full flex-center px-5 overflow-hidden"
+      className="relative w-full overflow-hidden px-5 md:px-0"
     >
       {/* Background glow */}
-      <div className="pointer-events-none absolute -left-40 top-20 w-[450px] h-[450px] rounded-full bg-blue-500/10 blur-[140px]" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-52
+          top-20
+          h-[450px]
+          w-[450px]
+          rounded-full
+          bg-blue-500/10
+          blur-[140px]
+        "
+      />
 
-      <div className="pointer-events-none absolute -right-40 bottom-20 w-[450px] h-[450px] rounded-full bg-pink-500/10 blur-[140px]" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-52
+          bottom-20
+          h-[450px]
+          w-[450px]
+          rounded-full
+          bg-purple-500/10
+          blur-[140px]
+        "
+      />
 
-      <div className="container relative z-10 w-full md:my-40 my-20">
+      <div className="container relative z-10 w-full py-20 md:my-20 md:py-20">
         {/* Header */}
-        <div className="education-header">
+        <div className="education-heading">
           <TitleHeader
             title="EDUCATION"
-            number="04"
+            number="05"
             text="The academic journey behind my skills and knowledge"
           />
         </div>
 
         {/* Timeline */}
         <div className="education-timeline relative mt-16 md:mt-24">
-          {/* Timeline Line */}
+          {/* Timeline line */}
           <div
             className="
               education-line
               absolute
-              left-[14px]
-              md:left-[24px]
-              top-0
-              bottom-0
-              w-[1px]
+              left-[15px]
+              top-5
+              bottom-5
+              w-px
               bg-gradient-to-b
               from-blue-50
               via-white/20
-              to-pink-100
+              to-purple-400/20
+              md:left-[25px]
             "
           />
 
           <div className="flex flex-col gap-10 md:gap-14">
             {educationData.map((education) => (
               <div key={education.number} className="relative pl-12 md:pl-20">
-                {/* Timeline Dot */}
+                {/* Timeline dot */}
                 <div
                   className="
                     education-dot
                     absolute
                     left-0
                     top-8
-                    w-7
-                    h-7
-                    md:w-12
-                    md:h-12
-                    rounded-full
-                    bg-black-300
-                    border
-                    border-white/20
+                    z-10
                     flex
+                    h-8
+                    w-8
                     items-center
                     justify-center
+                    rounded-full
+                    border
+                    border-white/15
+                    bg-black-300
                     shadow-[0_0_30px_rgba(80,120,255,0.25)]
-                    z-10
+                    md:h-12
+                    md:w-12
                   "
                 >
                   <div
                     className="
-                      w-2.5
                       h-2.5
-                      md:w-3
-                      md:h-3
+                      w-2.5
                       rounded-full
                       bg-blue-50
-                      shadow-[0_0_15px_rgba(80,120,255,0.9)]
+                      shadow-[0_0_18px_rgba(80,120,255,0.9)]
+                      md:h-3
+                      md:w-3
                     "
                   />
                 </div>
 
-                {/* Education Card */}
+                {/* Card */}
                 <div
                   className="
                     education-card
@@ -198,25 +232,25 @@ const Education = () => {
                     border
                     border-white/10
                     bg-black-300/80
-                    backdrop-blur-xl
                     p-6
-                    md:p-9
+                    backdrop-blur-xl
                     transition-all
                     duration-500
                     hover:-translate-y-2
                     hover:border-blue-50/30
-                    hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)]
+                    hover:shadow-[0_25px_80px_rgba(0,0,0,0.4)]
+                    md:p-9
                   "
                 >
-                  {/* Hover Glow */}
+                  {/* Hover glow */}
                   <div
                     className="
                       pointer-events-none
                       absolute
                       -right-24
                       -top-24
-                      w-64
                       h-64
+                      w-64
                       rounded-full
                       bg-blue-50/10
                       blur-3xl
@@ -227,121 +261,115 @@ const Education = () => {
                     "
                   />
 
-                  {/* Top Information */}
+                  {/* Top row */}
                   <div
                     className="
                       relative
                       flex
                       flex-col
+                      gap-4
                       md:flex-row
                       md:items-center
                       md:justify-between
-                      gap-5
                     "
                   >
-                    {/* Number + Year */}
                     <div className="flex items-center gap-3">
-                      <span className="text-sm md:text-base text-blue-50/60 font-medium">
+                      <span className="text-sm font-medium text-blue-50/70 md:text-base">
                         {education.number}
                       </span>
 
-                      <div className="w-8 h-px bg-white/20" />
+                      <span className="h-px w-8 bg-white/20" />
 
-                      <span className="text-sm md:text-base text-white/50 tracking-wide">
+                      <span className="text-sm tracking-wide text-white/50 md:text-base">
                         {education.year}
                       </span>
                     </div>
 
-                    {/* Right Side */}
-                    <div className="flex items-center gap-3">
-                      {/* Status */}
-                      <span
-                        className={`
-                          w-fit
-                          rounded-full
-                          border
-                          px-4
-                          py-1.5
-                          text-xs
-                          md:text-sm
-                          tracking-wide
-                          ${
-                            education.status === "Currently Pursuing"
-                              ? "border-blue-50/30 bg-blue-50/10 text-blue-50"
-                              : "border-white/10 bg-white/5 text-white/60"
-                          }
-                        `}
-                      >
-                        {education.status}
-                      </span>
-
-                      {/* CGPA */}
-                      <div
-                        className="
-                          cgpa-box
-                          flex
-                          items-center
-                          gap-2
-                          rounded-full
-                          border
-                          border-white/10
-                          bg-white/5
-                          px-4
-                          py-1.5
-                          transition-all
-                          duration-300
-                          group-hover:border-blue-50/30
-                          group-hover:bg-blue-50/10
-                        "
-                      >
-                        <span className="text-xs md:text-sm text-white/40">
-                          CGPA
-                        </span>
-
-                        <span className="text-sm md:text-base font-semibold text-white">
-                          {education.cgpa}
-                        </span>
-                      </div>
-                    </div>
+                    {/* Status */}
+                    <span
+                      className={`
+                        w-fit
+                        rounded-full
+                        border
+                        px-4
+                        py-1.5
+                        text-xs
+                        tracking-wide
+                        md:text-sm
+                        ${
+                          education.status === "Currently Pursuing"
+                            ? "border-blue-50/30 bg-blue-50/10 text-blue-50"
+                            : "border-white/10 bg-white/5 text-white/60"
+                        }
+                      `}
+                    >
+                      {education.status}
+                    </span>
                   </div>
 
-                  {/* Main Content */}
+                  {/* Main content */}
                   <div className="relative mt-7">
-                    <h2 className="gradient-title text-2xl md:text-4xl font-semibold">
+                    <h2 className="gradient-title text-3xl font-semibold md:text-5xl">
                       {education.degree}
                     </h2>
 
-                    <h3 className="mt-2 text-lg md:text-2xl text-white/80 font-medium">
+                    <h3 className="mt-2 text-lg font-medium text-white/80 md:text-2xl">
                       {education.field}
                     </h3>
 
-                    <p className="mt-2 text-sm md:text-lg text-white/40">
+                    <p className="mt-2 text-sm text-white/40 md:text-lg">
                       {education.institute}
                     </p>
 
-                    <p className="mt-6 max-w-3xl text-sm md:text-lg leading-relaxed text-white/60">
+                    {/* CGPA */}
+                    <div
+                      className="
+                        mt-6
+                        inline-flex
+                        items-center
+                        gap-3
+                        rounded-xl
+                        border
+                        border-white/10
+                        bg-white/[0.03]
+                        px-4
+                        py-3
+                      "
+                    >
+                      <span className="text-xs uppercase tracking-[0.2em] text-white/40">
+                        CGPA
+                      </span>
+
+                      <span className="h-4 w-px bg-white/10" />
+
+                      <span className="text-lg font-semibold text-blue-50">
+                        {education.cgpa}
+                      </span>
+                    </div>
+
+                    <p className="mt-6 max-w-3xl text-sm leading-relaxed text-white/55 md:text-lg">
                       {education.description}
                     </p>
                   </div>
 
-                  {/* Bottom Decoration */}
+                  {/* Bottom decoration */}
                   <div className="relative mt-8 flex items-center justify-between">
                     <div className="flex items-center gap-1">
-                      <span className="w-8 h-1 rounded-full bg-blue-50/70" />
-                      <span className="w-2 h-1 rounded-full bg-white/20" />
-                      <span className="w-2 h-1 rounded-full bg-pink-100/50" />
+                      <span className="h-1 w-8 rounded-full bg-blue-50/70" />
+                      <span className="h-1 w-2 rounded-full bg-white/20" />
+                      <span className="h-1 w-2 rounded-full bg-purple-400/50" />
                     </div>
 
                     <span
                       className="
-                        text-xs
-                        md:text-sm
+                        text-[10px]
                         uppercase
                         tracking-[0.25em]
-                        text-white/30
+                        text-white/25
                         transition-colors
                         duration-300
-                        group-hover:text-white/60
+                        group-hover:text-white/50
+                        md:text-sm
                       "
                     >
                       Information Technology
@@ -353,12 +381,12 @@ const Education = () => {
           </div>
         </div>
 
-        {/* Bottom Quote */}
-        <div className="education-quote mt-16 md:mt-20 flex justify-center">
-          <p className="max-w-2xl text-center text-sm md:text-lg text-white/35 leading-relaxed">
+        {/* Bottom text */}
+        <div className="mt-16 flex justify-center md:mt-20">
+          <p className="max-w-2xl text-center text-sm leading-relaxed text-white/30 md:text-lg">
             From building my foundation through a Diploma to pursuing my
-            Bachelor's degree, every step continues to shape me into a better
-            developer.
+            Bachelor&apos;s degree, every step continues to shape me into a
+            better developer.
           </p>
         </div>
       </div>

@@ -42,17 +42,14 @@ const ContactForm = () => {
     setSendError("");
 
     try {
-      // Get EmailJS credentials from .env
       const serviceID = import.meta.env.VITE_EMAIL_SERVICE_ID;
       const templateID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 
-      // Make sure environment variables exist
       if (!serviceID || !templateID || !publicKey) {
         throw new Error("EmailJS environment variables are missing.");
       }
 
-      // Data sent to EmailJS template
       const templateParams = {
         from_name: data.name,
         from_email: data.email,
@@ -62,15 +59,11 @@ const ContactForm = () => {
         reply_to: data.email,
       };
 
-      // Send email
       await emailjs.send(serviceID, templateID, templateParams, {
         publicKey,
       });
 
-      // Only show success after successful send
       setSuccess(true);
-
-      // Clear form
       reset(initialValues);
     } catch (error) {
       console.error("EmailJS Error:", error);
@@ -82,13 +75,13 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full min-w-0">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-6 text-[#a7a7a7] md:gap-7"
+        className="flex w-full min-w-0 flex-col gap-6 text-[#a7a7a7] sm:gap-7"
       >
         {/* ================= NAME ================= */}
-        <div>
+        <div className="w-full min-w-0">
           <label
             htmlFor="name"
             className="mb-2 block text-lg font-semibold text-white md:text-2xl"
@@ -103,11 +96,14 @@ const ContactForm = () => {
             autoComplete="name"
             {...register("name")}
             className="
+              box-border
+              block
               w-full
+              min-w-0
               rounded-md
               bg-black-300
               px-4
-              py-4
+              py-3.5
               text-sm
               font-light
               text-white
@@ -117,6 +113,7 @@ const ContactForm = () => {
               placeholder:text-white/30
               focus:ring-1
               focus:ring-blue-50
+              md:py-4
               md:text-base
             "
           />
@@ -127,7 +124,7 @@ const ContactForm = () => {
         </div>
 
         {/* ================= EMAIL ================= */}
-        <div>
+        <div className="w-full min-w-0">
           <label
             htmlFor="email"
             className="mb-2 block text-lg font-semibold text-white md:text-2xl"
@@ -142,11 +139,14 @@ const ContactForm = () => {
             autoComplete="email"
             {...register("email")}
             className="
+              box-border
+              block
               w-full
+              min-w-0
               rounded-md
               bg-black-300
               px-4
-              py-4
+              py-3.5
               text-sm
               font-light
               text-white
@@ -156,6 +156,7 @@ const ContactForm = () => {
               placeholder:text-white/30
               focus:ring-1
               focus:ring-blue-50
+              md:py-4
               md:text-base
             "
           />
@@ -166,7 +167,7 @@ const ContactForm = () => {
         </div>
 
         {/* ================= SUBJECT ================= */}
-        <div>
+        <div className="w-full min-w-0">
           <label
             htmlFor="subject"
             className="mb-2 block text-lg font-semibold text-white md:text-2xl"
@@ -180,11 +181,14 @@ const ContactForm = () => {
             placeholder="How can I help you?"
             {...register("subject")}
             className="
+              box-border
+              block
               w-full
+              min-w-0
               rounded-md
               bg-black-300
               px-4
-              py-4
+              py-3.5
               text-sm
               font-light
               text-white
@@ -194,6 +198,7 @@ const ContactForm = () => {
               placeholder:text-white/30
               focus:ring-1
               focus:ring-blue-50
+              md:py-4
               md:text-base
             "
           />
@@ -206,7 +211,7 @@ const ContactForm = () => {
         </div>
 
         {/* ================= MESSAGE ================= */}
-        <div>
+        <div className="w-full min-w-0">
           <label
             htmlFor="message"
             className="mb-2 block text-lg font-semibold text-white md:text-2xl"
@@ -220,12 +225,15 @@ const ContactForm = () => {
             placeholder="Tell me about your project..."
             {...register("message")}
             className="
+              box-border
+              block
               w-full
+              min-w-0
               resize-none
               rounded-md
               bg-black-300
               px-4
-              py-4
+              py-3.5
               text-sm
               font-light
               text-white
@@ -235,6 +243,7 @@ const ContactForm = () => {
               placeholder:text-white/30
               focus:ring-1
               focus:ring-blue-50
+              md:py-4
               md:text-base
             "
           />
@@ -282,7 +291,7 @@ const ContactForm = () => {
           </div>
         )}
 
-        {/* ================= SUBMIT ================= */}
+        {/* ================= SUBMIT BUTTON ================= */}
         <button
           type="submit"
           disabled={loading}
@@ -290,6 +299,7 @@ const ContactForm = () => {
             w-full
             rounded-md
             bg-blue-50
+            px-4
             py-4
             font-semibold
             text-white
@@ -297,6 +307,7 @@ const ContactForm = () => {
             duration-300
             hover:-translate-y-0.5
             hover:bg-blue-300
+            hover:shadow-[0_10px_30px_rgba(80,120,255,0.25)]
             active:scale-[0.98]
             disabled:cursor-not-allowed
             disabled:opacity-60
