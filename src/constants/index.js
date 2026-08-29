@@ -8,12 +8,24 @@ const navItems = [
     href: "#about",
   },
   {
+    name: "Tech Stack",
+    href: "#tech-stack",
+  },
+  {
     name: "Projects",
     href: "#projects",
   },
   {
     name: "Testimonials",
     href: "#testimonials",
+  },
+  {
+    name: "Education",
+    href: "#education",
+  },
+  {
+    name: "Achievements",
+    href: "#achievements",
   },
   {
     name: "Contact",

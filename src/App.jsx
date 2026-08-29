@@ -10,6 +10,8 @@ import {
   Footer,
   Contact,
 } from "./sections";
+import Achievements from "./sections/Achievements";
+import Education from "./sections/Education";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
       <About />
       <TechStack />
       <Projects />
+      <Education />
+      <Achievements />
       <Testimonials />
       <Contact />
       <Footer />
